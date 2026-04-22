@@ -11,16 +11,17 @@ for i in range(filas):
         while True:
             fi=int(input(f"ingrese un valor {i}{j}: "))
             if fi % 2 == 0:
-                fila.append(fi)
+                if fi == 0:
+                    print("Ingrese un número diferente de 0")
+                else:
+                    fila.append(fi)
+                    break
             else:
                 print("ingrese un numero par")
-              break
     lista.append(fila)
 
 for i in lista:
-    lista.sort()
-    for j in i:
-        j.sort()
+    i.sort()
         
 for i in lista:
     print(i)

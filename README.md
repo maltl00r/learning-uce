@@ -43,7 +43,7 @@ notas = []
 try:
     for i in range(2): # Se solicitan dos notas
         nota=float(input(f"Ingrese la nota #{i+1}: "))
-        notas.append(nota)
+        notas.append(nota) # Cada nota se añade al final de la lista "notas"
 
     promedio = sum(notas) / len(notas) # Calcula el promedio de la lista "notas"
 

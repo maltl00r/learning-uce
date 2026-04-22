@@ -91,11 +91,7 @@ while True:
     o=int(input("Ingrese una opción: "))
     if o==1:
         for i in range(len(asig)):
-            suma = 0
-            for j in range(len(notas_matriz)):
-                suma +=notas_matriz[j][i]
-            promedio=suma/len(notas_matriz)
-            print(f"{asig[i]}: {promedio}")
+            print(f"{asig[i]}: {promedios_asignatura[i]}")
     elif o==2:
         for i in range(len(estudiantes)):
             print(f"{estudiantes[i]}: {sum(notas_matriz[i])/len(notas_matriz[i])}")

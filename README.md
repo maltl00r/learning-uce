@@ -54,4 +54,5 @@ except ValueError: # Si se introduce un valor que no es decimal, ejecutará lo s
     print("Solo se pueden ingresar números")
 
 else: # Si no existe ningún error, muestra el promedio en la consola
-    print(promedio)```
+    print(promedio)
+```

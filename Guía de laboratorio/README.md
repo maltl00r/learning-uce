@@ -9,4 +9,20 @@ Diseñar programas informáticos, implementando las principales estructuras de d
 ---
 ## 🤳 Ejercicios
 
-### 1. pcei2a-ejercicio1.py
+### 1. [pcei2a-ejercicio1.py](./pcei2a-ejercicio1.py)
+- **Tema:** Gestión de Inventarios
+- **Descripción:** El usuario deberá poder añadir una lista de productos a un diccionario. Para cada producto, el usuario debe ingresar: Modelo, Precio, Stock y mostrarlo en pantalla.
+
+---
+
+### 2. [pcei2a-ejercicio2.py](./pcei2a-ejercicio2.py)
+- **Tema:** Gestión de Calificaciones
+- **Descripción:** El usuario deberá poder añadir una lista estudiantes y calificaciones por asignatura. Al final, el código deberá mostrar un promedio por asignaturas y por estudiantes.
+- **Recursos utilizados:**
+    - `for`
+    - `while`
+    - `tuples` 
+    - `list`
+    - `if`
+    - `elif`
+    - `else`

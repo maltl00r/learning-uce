@@ -52,34 +52,34 @@ i = 0
 
 
 # Registro de estudiantes y sus notas
-while True:
+while True: # Bucle para ingresar un estudiante.
     nombre=input(f"A continuación, deberá ingresar el nombre del estudiante #{i+1} para añadirlo a la lista (Escriba 'salir' si desea salir): ").upper()
-    if nombre=='salir'.upper():
+    if nombre=='salir'.upper(): # Se sale del bucle si el usuario escribe 'salir'
         break
-    else:
-        estudiantes.append(nombre)
-        notas=[]
-        j=0
-        while True:
-            if j==len(asig):
+    else: # Se continúa con el registro del usuario
+        estudiantes.append(nombre) # Se guarda el nombre del estudiante en la lista 'estudiantes'
+        notas=[] # Se crea una lista vacía para almacenar las notas por cada estudiante de manera temporal. Resultado: [20.0, 20.0, 20.0, 20]
+        j=0 # Variable para utilizar en un bucle
+        while True: # Bucle para ingresar la nota de cada asignatura
+            if j==len(asig): # Se sale del bucle si la variable 'j' es igual a la cantidad de asignaturas
                 break
             else:
                 nota = float(input(f"Ingrese la nota para la materia {asig[j]} del estudiante {estudiantes[i]}: "))
-                if nota >= 0 and nota <= 20:
-                    notas.append(nota)
-                    j+=1
+                if nota >= 0 and nota <= 20: # Valida que la calificación sea entre 0 y 20
+                    notas.append(nota) # Si la calificación cumple dicha condición, se guarda la nota en la lista de 'notas'
+                    j+=1 
                 else:
                     print("La nota debe estar entre 0 y 20")
-        notas_matriz.append(notas)        
-        i += 1
+        notas_matriz.append(notas)  # Se añaden las notas de la lista 'notas' a la lista 'notas_matriz'. Resultado [[notas], [notas]]      
+        i += 1 
 
 #Registro de promedios en la asignatura
-for i in range(len(asig)):
-    suma = 0
-    for j in range(len(notas_matriz)):
-        suma += notas_matriz[j][i]
-    promedio = suma / len(notas_matriz)
-    promedios_asignatura.append(promedio)
+for i in range(len(asig)): # Bucle que se va a repetir por cada asignatura
+    suma = 0 # Variable temporal para guardar la suma de todas las calificaciones
+    for j in range(len(notas_matriz)): # Bucle que se va a repetir por cada estudiante
+        suma += notas_matriz[j][i] # Se va a sumar la nota de cada COLUMNA
+    promedio = suma / len(notas_matriz) # Se va a promediar y guardar en la variable temporal 'promedio'
+    promedios_asignatura.append(promedio) # Guarda el promedio por cada ASIGNATURA en la lista 'promedios_asignatura'
 
 # Muestra de datos
 while True:
@@ -90,10 +90,10 @@ while True:
     print("4. Salir del programa")
     o=int(input("Ingrese una opción: "))
     if o==1:
-        for i in range(len(asig)):
+        for i in range(len(asig)): # Bucle que se va a repetir para cada asignatura
             print(f"{asig[i]}: {promedios_asignatura[i]}")
     elif o==2:
-        for i in range(len(estudiantes)):
+        for i in range(len(estudiantes)): # Bucle que se va a repetir por cada estudiante
             print(f"{estudiantes[i]}: {sum(notas_matriz[i])/len(notas_matriz[i])}")
     elif o==3:
         print(estudiantes)

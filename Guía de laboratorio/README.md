@@ -36,6 +36,12 @@ Diseñar programas informáticos, implementando las principales estructuras de d
 
 ---
 
+### 4. [pcei2a-práctica4.py](./pcei2a-práctica4.py)
+- **Tema:** Manejo de excepciones  
+- **Descripción:** Se analiza y mejora una calculadora básica implementando control de errores mediante bloques `try...except`. El objetivo es identificar posibles fallos como entrada de datos no numéricos, división por cero y operaciones inválidas, y manejarlos adecuadamente para evitar que el programa se detenga y mejorar la experiencia del usuario.
+
+---
+
 ## ▶️ ¿Cómo usar esta carpeta?
 
 1. Lee la descripción del ejercicio  

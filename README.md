@@ -6,11 +6,13 @@ Uso únicamente educativo. No autorizado para entrega académica como propio.
 
 ## Contenidos
 
-## Contenidos
 ### Documentación
+Explicaciones de algunos bloques de código.
 - [Manejo de Excepciones en Python](docs/manejo_excepciones.md)
+- [Métodos](docs/métodos.md)
+
 ### Guía de laboratorio
-Actividad y ejercicios propuestos
+Actividad y ejercicios propuestos. [Clic aquí](Guía de laboratorio/README.md) para obtener más información.
 
 ### APE-PAE
 Aprendizaje experimentativo (actividades grupales)

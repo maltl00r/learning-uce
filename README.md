@@ -12,7 +12,7 @@ Explicaciones de algunos bloques de código.
 - [Métodos](docs/métodos.md)
 
 ### Guía de laboratorio
-Actividad y ejercicios propuestos. [Clic aquí](Guía de laboratorio/README.md) para obtener más información.
+Actividad y ejercicios propuestos. [Clic aquí](Gu%C3%ADa%20de%20laboratorio/README.md) para obtener más información.
 
 ### APE-PAE
 Aprendizaje experimentativo (actividades grupales)

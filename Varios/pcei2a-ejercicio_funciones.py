@@ -44,7 +44,8 @@ def multiplicacion(x,y):
     resultado=x*y # Guarda el resultado de la multiplicación en una variable
     return resultado # Retorna la variable 'resultado' cuando se solicita la función multiplicacion()
 
-while True: # Bucle para repetir el programa hasta que el usuario decida concluir
+opcion=""
+while opcion != 'si': # Bucle para repetir el programa hasta que el usuario decida concluir
     try:
         while True: # Bucle para solicitar números hasta que sean válidos
             x = float(input("Ingrese el primer número: ")) # Guarda el primer número en la variable X
@@ -83,9 +84,12 @@ while True: # Bucle para repetir el programa hasta que el usuario decida conclui
 
                 else:
                     print("Operador inválido, intente nuevamente.")
+            break # Rompe el bucle para solicitar números siempre que termine le operación
 
     except ValueError: # Si se ingresa un valor que no es un número ejecutará lo siguiente
         print(mensaje2()) # Llama a la función tipo 2 y la muestra en consola.
     except ZeroDivisionError:
         print("No se puede dividir para 0.") # Si se elige la opción '/' (división) y da error, se mostrará este mensaje
+    finally: # Al finalizar el programa. SIEMPRE preguntará al usuario si desea salirse
+        opcion = input("¿Desea salir del programa? (si/no): ")
 

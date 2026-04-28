@@ -18,7 +18,8 @@ try:
             lista.append(numero) 
         else:
             print("Solo se permite ingresar números pares")
-            break
+            break # Cuando el usuario digita un número impar, se sale del bucle y ejecuta el resto del código
+
 # Si el bloque anterior da un error, guarda el error como la variable "e" y lo imprime
 except ValueError as e:
     print(e)

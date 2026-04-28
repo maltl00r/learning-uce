@@ -13,7 +13,7 @@
 
 # Función tipo 1. Replica el código cuando se llama, no recibe parámetros ni retorna nada
 def mensaje():
-    print("El número ingresado debe ser igual mayor que 0") # Muestra el mensaje en consola cuando se lo solicita
+    print("El número ingresado debe ser igual o mayor que 0") # Muestra el mensaje en consola cuando se lo solicita
 
 # Función tipo 2. Replica el código cuando se llama, no recibe parámetros y retorna un valor.
 def mensaje2():
@@ -51,37 +51,40 @@ while True: # Bucle para repetir el programa hasta que el usuario decida conclui
             # Valida que 'x' sea mayor o igual que 0
             if x < 0: 
                 mensaje() # Se solicita la función tipo 1
+                break # Si es un número inválido, se rompe el bucle de solicitar números
             
             y = float(input("Ingrese el segundo número: ")) # Guarda el segundo número en la variable Y
             # Valida que 'y' sea mayor o igual que 0
             if y < 0:
                 mensaje() # Se solicita la función tipo 1
-            break # Si ambos números son válidos, se rompe el bucle de solicitar números
+                break # Si es un número inválido, se rompe el bucle de solicitar números
+            
+            # Si ambos números son válidos, va a operar el siguiente código:
+            if x and y >= 0:
+                # Guarda el operador en la variable 'opción'
+                opcion = input("Ingrese un operador matemático (+, -, *, o /) para continuar con la operación: ") 
 
-        # Guarda el operador en la variable 'opción'
-        opcion = input("Ingrese un operador matemático (+, -, *, o /) para continuar con la operación: ") 
+                # Mostrará el mensaje dependiendo de la operación que se elija
+                if opcion == '+': 
+                    print("El resultado de la suma es: ")
+                    suma(x,y) # Se solicita la función tipo 3
 
-        # Mostrará el mensaje dependiendo de la operación que se elija
-        if opcion == '+': 
-            print("El resultado de la suma es: ")
-            suma(x,y) # Se solicita la función tipo 3
+                elif opcion == '-':
+                    print("El resultado de la resta es: ")
+                    resta(x,y) # Se solicita la función tipo 3
 
-        elif opcion == '-':
-            print("El resultado de la resta es: ")
-            resta(x,y) # Se solicita la función tipo 3
+                elif opcion == '*':
+                    print("El resultado de la multiplicación es: ")
+                    print(multiplicacion(x,y)) # Se solicita la función tipo 4
 
-        elif opcion == '*':
-            print("El resultado de la multiplicación es: ")
-            print(multiplicacion(x,y)) # Se solicita la función tipo 4
+                elif opcion == '/':
+                    print("El resultado de la división es: ")
+                    print(division(x,y)) # Se solicita la función tipo 4
 
-        elif opcion == '/':
-            print("El resultado de la división es: ")
-            print(division(x,y)) # Se solicita la función tipo 4
+                else:
+                    print("Operador inválido, intente nuevamente.")
 
-        else:
-            print("Operador inválido, intente nuevamente.")
-        
-    except ValueError:
+    except ValueError: # Si se ingresa un valor que no es un número ejecutará lo siguiente
         print(mensaje2()) # Llama a la función tipo 2 y la muestra en consola.
     except ZeroDivisionError:
         print("No se puede dividir para 0.") # Si se elige la opción '/' (división) y da error, se mostrará este mensaje

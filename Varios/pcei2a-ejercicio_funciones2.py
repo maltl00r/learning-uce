@@ -1,0 +1,17 @@
+usuarios=[{"cédula":1207499999, "nombres":"LOOR MARVIN", "telefono":0982799999, "cuentas":[
+    {
+        "tipo":"AHORROS", 
+        "numero":19112005,
+        "pin":4321,
+        "saldo":150.00
+    }]},{"cédula":1550199999, "nombres":"FIALLOS BRYANA", "telefono":0991699999, "cuentas":[
+    {
+        "tipo":"AHORROS", 
+        "numero":19052006,
+        "pin":8765,
+        "saldo":10.00
+    },{
+        "tipo":"CORRIENTE", 
+        "numero":03052006,
+        "pin":8765,
+        "saldo":1000.00}]}]

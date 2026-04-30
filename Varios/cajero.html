@@ -11,7 +11,7 @@
         <p>¡Bienvenido al cajero del Banco Centralino!</p>
         <p>Por favor, seleccione una opción:</p>
         <button id="retiro" onclick="retiro()">Retiro</button>
-        <button id="desposito" onclick="deposito()">Depósito</button>
+        <button id="deposito" onclick="deposito()">Depósito</button>
         <button id="crear">Crear una cuenta</button>
     </div>
 </body>
@@ -36,43 +36,42 @@ let usuarios=[{cedula:"1207499999", nombres:"LOOR MARVIN", telefono:"0982799999"
           saldo:1000.00}]}]
 
 let pantalla = document.getElementById("pantalla");
-let verInicio = pantalla.innerHTML;
-const btnCancelar = "<button id=\"cancelar\" onclick=\"cancelar()\">Cancelar </button>"
+let versInicio = pantalla.innerHTML;
+let numeroC, tipo;
 
-function retiro() {
-    let input = prompt("Ingrese su número de cédula: ").trim();
-    let usuario = usuarios.find(u => u.cedula == input);
-
-    if (usuario) {
-       pantalla.innerHTML = `¡Bienvenido, <strong>${usuario.nombres}</strong>!<br><br>`;
-       pantalla.innerHTML += btnCancelar; 
-       
-    } else {
-        alert("Usuario no encontrado");
-    }
+function addBtn(tipo) {
+    pantalla.innerHTML += `<input id="input" type="string">`;
+    pantalla.innerHTML += `<button onclick="confirmar('${tipo}')">Aceptar</button>`;
+    pantalla.innerHTML += `<button id="cancelar" onclick="cancelar()">Cancelar </button>`;
+}
+function cancelar() {
+    pantalla.innerHTML = versInicio;
 }
 
-function cancelar() {
-    pantalla.innerHTML = verInicio;
+function retiro() {
+    tipo = 'retiro'
+    pantalla.innerHTML = "Ingrese su número de cédula<br>";
+    addBtn(tipo)
+
+
+    // input = input.trim()
+
 }
 
 function deposito() {
-    let input = prompt("Ingrese el número de cuenta: ").trim();
-    let usuario = usuarios.find( u => u.cuentas.find(n => n.numero == input) );
-
-    if(usuario) {
-        let confirmar = confirm(`¿Desea depositar a ${usuario.nombres}?`);
-        if (confirmar) {
-            input = Number(prompt("Ingrese la cantidad a depositar"))
-            confirmar = confirm(`¿Desea usted depositar $${input}?`)
-            if (confirmar) {
-                alert(`Se depositaron $${input} correctamente.`)
-            }
-        }
-    } else {
-        alert("Usuario no encontrado")
-    }
+    tipo = 'deposito'
+    pantalla.innerHTML = "Ingrese el número de cuenta en el que va a realizar un depósito<br>";
+    addBtn(tipo)
 }
+
+function confirmar(tipo) {
+    let input = document.getElementById("input").value;
+    
+    if(tipo==='retiro'){
+        let usuario = usuarios.find(u => u.cedula == input);
+        if (usuario) console.log(usuario);}
+}
+
 </script>
 
 </html>

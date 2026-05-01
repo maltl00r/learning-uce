@@ -12,7 +12,7 @@
         <p>Por favor, seleccione una opción:</p>
         <button id="retiro" onclick="retiro()">Retiro</button>
         <button id="deposito" onclick="deposito()">Depósito</button>
-        <button id="crear">Crear una cuenta</button>
+        <button id="crear" onclick="crearCuenta()">Crear una cuenta</button>
     </div>
 </body>
 
@@ -37,49 +37,75 @@ let usuarios=[{cedula:"1207499999", nombres:"LOOR MARVIN", telefono:"0982799999"
 
 let pantalla = document.getElementById("pantalla");
 let versInicio = pantalla.innerHTML;
-let numeroC, tipo;
+let usuarioActual;
+const btnCancelar = `<button onclick="cancelar()">Cancelar</button>`;
+const formCedula = `
+    <p>Ingrese su número de cédula</p>
+    <input type="text" id="cedula">
+    `;
 
-function addBtn(tipo) {
-    pantalla.innerHTML += `<input id="input" type="string">`;
-    pantalla.innerHTML += `<button onclick="confirmar('${tipo}')">Aceptar</button>`;
-    pantalla.innerHTML += `<button id="cancelar" onclick="cancelar()">Cancelar </button>`;
+function buscarCedula() {
+    let input = document.getElementById("cedula").value.trim();
+
+    let usuario = usuarios.find(u => u.cedula === input);
+
+    if (usuario) {
+        usuarioActual = usuario;
+        return true;
+    } else {
+        alert("No se encontró ningún usuario");
+        return false;
+    }
 }
+
+
+
 function cancelar() {
     pantalla.innerHTML = versInicio;
 }
 
 function retiro() {
-    tipo = 'retiro'
-    pantalla.innerHTML = "Ingrese su número de cédula<br>";
-    addBtn(tipo)
+    pantalla.innerHTML = formCedula;
+    pantalla.innerHTML += `<button onclick="buscarCedula()">Buscar</button>`
+    pantalla.innerHTML += btnCancelar;
 
 }
 
 function deposito() {
-    tipo = 'deposito'
-    pantalla.innerHTML = "Ingrese el número de cuenta en el que va a realizar un depósito<br>";
-    addBtn(tipo)
+
 }
 
-function confirmar(tipo) {
-    let input = document.getElementById("input").value;
+function crearCuenta() {
+    pantalla.innerHTML = formCedula;
+    pantalla.innerHTML += `<button onclick="creacionCuenta()">Buscar</button>`
+    pantalla.innerHTML += btnCancelar;
+}
     
-    if(tipo==='retiro'){
-        let usuario = usuarios.find(u => u.cedula == input);
-        if (usuario) {
-            pantalla.innerHTML = `
-            Bienvenido/a <strong>${usuario.nombres}</strong><br>
-            Ingrese monto a retirar<br>
-            `;
-        return;
-        }
+function creacionCuenta() {
+    if(buscarCedula()===true) {
+        pantalla.innerHTML= `
+        <p>Por favor, llene sus datos para crear una cuenta.</p>
 
-    }else if(tipo==='deposito') {
-        console.log(tipo)
+        <form class="crear-cuenta" onsubmit="guardarCuenta(event)">
+            <p><strong>Nombres:</strong> ${usuarioActual.nombres}</p>
+            <p><strong>Cédula:</strong> ${usuarioActual.cedula}</p>
+            <p><strong>Numero de teléfono:</strong> ${usuarioActual.telefono}</p>
+
+            <label for="pin">Seleccione su PIN:</label><br>
+            <input type="number" id="pin" name="pin"><br>
+
+            <p>Seleccione el tipo de cuenta:</p>
+            <input type="radio" id="ahorros" name="crear-cuenta" value="AHORROS">
+            <label for="ahorros">Ahorros</label><br>
+            <input type="radio" id="corriente" name="crear-cuenta" value="CORRIENTE">
+            <label for="corriente">Corriente</label><br>
+
+            <button type="submit">Crear cuenta</button>
+        </form>
+        `;
+        pantalla.innerHTML += btnCancelar;
     }
-
 }
-
 </script>
 
 </html>

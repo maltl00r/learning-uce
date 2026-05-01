@@ -88,18 +88,20 @@ function creacionCuenta() {
         pantalla.innerHTML= `
         <p>Por favor, llene sus datos para crear una cuenta.</p>
 
-        <form class="crear-cuenta" onsubmit="guardarCuenta(event)">
+        <form class="generar-cuenta" onsubmit="guardarCuenta(event)">
             <p><strong>Nombres:</strong> ${usuarioActual.nombres}</p>
+
             <p><strong>Cédula:</strong> ${usuarioActual.cedula}</p>
+
             <p><strong>Numero de teléfono:</strong> ${usuarioActual.telefono}</p>
 
-            <label for="pin">Seleccione su PIN:</label><br>
+            <label for="pin"><strong>Seleccione su PIN:</strong></label><br>
             <input type="number" id="pin" name="pin"><br>
 
-            <p>Seleccione el tipo de cuenta:</p>
-            <input type="radio" id="ahorros" name="crear-cuenta" value="AHORROS">
+            <p><strong>Seleccione el tipo de cuenta:</strong></p>
+            <input type="radio" id="ahorros" name="generar-cuenta" value="AHORROS">
             <label for="ahorros">Ahorros</label><br>
-            <input type="radio" id="corriente" name="crear-cuenta" value="CORRIENTE">
+            <input type="radio" id="corriente" name="generar-cuenta" value="CORRIENTE">
             <label for="corriente">Corriente</label><br>
 
             <button type="submit">Crear cuenta</button>
@@ -116,7 +118,32 @@ function creacionCuenta() {
 }
 
 function crearCuenta() {
-    
+    pantalla.innerHTML = `
+    <p>Por favor, llene sus datos para crear una cuenta.</p>
+  
+    <form class="crear-cuenta" onsubmit="guardarCuenta(event)">
+        <label for="nombre"><strong>Escriba su nombre:</strong></label><br>
+        <input type="text" id="nombre" name="nombre"><br>
+        
+        <label for="cedula"><strong>Escriba su cédula:</strong></label><br>
+        <input type="text" id="cedula" name="cedula"><br>
+        
+        <label for="telefono"><strong>Escriba su número telefónico:</strong></label><br>
+        <input type="text" id="telefono" name="telefono"><br>
+
+        <label for="pin"><strong>Seleccione su PIN:</strong></label><br>
+        <input type="number" id="pin" name="pin"><br>
+
+        <p><strong>Seleccione el tipo de cuenta:</strong></p>
+        <input type="radio" id="ahorros" name="crear-cuenta" value="AHORROS">
+        <label for="ahorros">Ahorros</label><br>
+        <input type="radio" id="corriente" name="crear-cuenta" value="CORRIENTE">
+        <label for="corriente">Corriente</label><br>
+
+        <button type="submit">Crear cuenta</button>
+    </form>
+    ${btnCancelar}
+    `;
 }
 </script>
 

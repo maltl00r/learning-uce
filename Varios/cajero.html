@@ -58,17 +58,26 @@ function buscarCedula() {
     }
 }
 
-
-
 function cancelar() {
     pantalla.innerHTML = versInicio;
 }
 
 function retiro() {
     pantalla.innerHTML = formCedula;
-    pantalla.innerHTML += `<button onclick="buscarCedula()">Buscar</button>`
+    pantalla.innerHTML += `<button onclick="retirando()">Buscar</button>`
     pantalla.innerHTML += btnCancelar;
 
+}
+
+function retirando() {
+    if(buscarCedula()===true) {
+        pantalla.innerHTML = `
+        ${usuarioActual.nombres}
+        <p>Seleccione su tipo de cuenta</p>
+        <button onclick="">Buscar</button>
+        ${btnCancelar}
+        `;
+    }
 }
 
 function deposito() {

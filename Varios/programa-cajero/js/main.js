@@ -5,7 +5,6 @@ import { buscarUsuarioPorCedula, validarFondos, validarUsuarioExistente, validar
 const btnRetiro = document.getElementById('btn-retiro');
 const btnDeposito = document.getElementById('btn-deposito');
 const btnCrear = document.getElementById('btn-crear');
-const pantalla = document.getElementById('pantalla');
 const cedulaInput = `<input type="text" id="cedulaInput" placeholder="Ingrese su número de cédula">`;
 const btnBuscar = `<button id=btnBuscar>Buscar</button>`;
 

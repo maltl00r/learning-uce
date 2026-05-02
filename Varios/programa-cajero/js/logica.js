@@ -117,7 +117,7 @@ export function crearNuevoUsuario(nombre, cedula, pin) {
     
     const nuevoUsuario = {
         cedula,
-        nombres: nombre,
+        nombres: nombre.toUpperCase().trim(),
         pin, 
         cuentas:[]
     };

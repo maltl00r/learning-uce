@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <script src="js/main.js" type="module"></script>
+    <title>Cajero Automático (ATM)</title>
+</head>
+
+<body>
+    <div id="cajero-contenedor">
+        <div id="mensaje">
+            
+        </div>
+
+        <div id="menu-principal" class="vista">
+            <p>¡Bienvenido al cajero del Banco Centralino!</p>
+            <p>Por favor, seleccione una opción:</p>
+            <button id="btn-retiro">Retiro</button>
+            <button id="btn-deposito">Depósito</button>
+            <button id="btn-crear">Crear una cuenta</button>
+        </div>
+
+
+        <div id="pantalla-formulario" class="vista" style="display: none;">
+            <h2 id="titulo-form">Operación</h2>
+            <div id="campos-dinamicos">
+                
+            </div>
+            <button id="btn-confirmar">Confirmar</button>
+            <button id="btn-cancelar">Cancelar</button>
+        </div>
+    </div>
+</body>
+
+</html>

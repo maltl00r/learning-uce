@@ -53,10 +53,15 @@ document.getElementById('btn-crear').addEventListener('click', () => {
         mensaje.innerHTML = res.mensaje;
         if(res.ok) {
             mensaje.innerHTML += " Redirigiendo...";
+            mensaje.innerHTML += `<br><br>¡¡¡GUARDE ESTOS DATOS!!!<br><br>
+            <strong>Nombres: </strong>${res.usuario.nombres}<br>
+            <strong>Número de cuenta: </strong>${res.usuario.cuentas[0].numero}<br>
+            <strong>Tipo de cuenta: </strong>${res.usuario.cuentas[0].tipo}<br>
+            `;
             setTimeout(() => {
                 mostrarVista('menu-principal');
                 mensaje.innerHTML = "";
-            }, 3000);
+            }, 30000);
         }
     };
 });

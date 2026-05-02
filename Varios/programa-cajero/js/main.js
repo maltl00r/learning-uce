@@ -29,6 +29,7 @@ const mensaje = document.getElementById('mensaje');
 
 document.getElementById('btn-cancelar').addEventListener('click', () => {
         mostrarVista('menu-principal');
+        mensaje.innerHTML = "";
     });
 
 document.getElementById('btn-crear').addEventListener('click', () => {
@@ -100,6 +101,7 @@ document.getElementById('btn-retiro').addEventListener('click', () => {
                     } else {
                         mensaje.innerHTML = retiro.mensaje;
                         mensaje.innerHTML += " Redirigiendo...";
+                        mensaje.innerHTML += `<br>Ahora posee un saldo de <strong>$${retiro.nuevoSaldo}</strong>`;
                         setTimeout(() => {
                             mostrarVista('menu-principal');
                             mensaje.innerHTML = "";
@@ -139,6 +141,7 @@ document.getElementById('btn-deposito').addEventListener('click', () => {
                 }  else {
                         mensaje.innerHTML = deposito.mensaje;
                         mensaje.innerHTML += " Redirigiendo...";
+                        mensaje.innerHTML += `<br>Ahora posee un saldo de <strong>$${deposito.nuevoSaldo}</strong>`;
                         setTimeout(() => {
                             mostrarVista('menu-principal');
                             mensaje.innerHTML = "";

@@ -95,7 +95,9 @@ document.getElementById('btn-retiro').addEventListener('click', () => {
             } else {
                 mensaje.innerHTML = "";
                 document.getElementById('titulo-form').innerText = "Retiro - Cantidad";
-                contenedor.innerHTML = `<input type="number" id="reg-cantidad" placeholder="Ingrese la cantidad a retirar">`;
+                contenedor.innerHTML = `<p>¡Bienvenido/a de vuelta, <strong>${respuesta.nombres}</strong>!</p>
+                <p>¿Cuánto desea retirar?</p>`
+                contenedor.innerHTML += `<input type="number" id="reg-cantidad" placeholder="Ingrese la cantidad a retirar">`;
 
                 document.getElementById('btn-confirmar').onclick = () => {
                     const monto = document.getElementById('reg-cantidad').value;
@@ -135,7 +137,9 @@ document.getElementById('btn-deposito').addEventListener('click', () => {
         } else {
             mensaje.innerHTML = "";
             document.getElementById('titulo-form').innerText = "Deposito - Cantidad";
-            contenedor.innerHTML = `<input type="number" id="reg-cantidad" placeholder="Ingrese la cantidad a depositar">`;
+                contenedor.innerHTML = `<p>¡Bienvenido/a de vuelta, <strong>${respuesta.nombres}</strong>!</p>
+                <p>¿Cuánto desea depositar?</p>`
+            contenedor.innerHTML += `<input type="number" id="reg-cantidad" placeholder="Ingrese la cantidad a depositar">`;
 
             document.getElementById('btn-confirmar').onclick = () => {
                 const monto = document.getElementById('reg-cantidad').value;

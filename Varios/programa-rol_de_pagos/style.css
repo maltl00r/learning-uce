@@ -58,7 +58,84 @@ body {
     .red-button:hover {
         background-color: #dc2626;
     }
-    .empleado-row {
-        display: flex;
-        flex-direction: column;
-    }
+    /* CONTEXTO: El contenedor de todas las tarjetas */
+#lista-empleados-actuales {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    padding: 10px;
+}
+
+/* LA TARJETA (Fila de empleado) */
+.empleado-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.empleado-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* DETALLES INTERNOS */
+.empleado-id {
+    font-size: 11px;
+    color: #94a3b8; /* Gris moderno */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.empleado-nombre {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: -2px;
+}
+
+.empleado-cargo {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.empleado-sueldo {
+    font-size: 15px;
+    font-weight: 600;
+    color: #16a34a; /* Verde éxito limpio */
+    margin-bottom: 8px; /* Separa un poco del botón */
+}
+
+/* CORRECCIÓN DEL BOTÓN */
+.empleado-boton {
+    margin-top: auto; /* Empuja el botón al fondo si las tarjetas varían de tamaño */
+    display: flex;
+}
+
+/* Apuntamos directamente a la etiqueta <button> que está dentro del div */
+.empleado-boton button {
+    width: 100%; /* Opcional: hace que el botón ocupe todo el ancho de la tarjeta */
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.empleado-boton button:hover {
+    background: #1d4ed8;
+}
+.oculto {
+    display: none !important;
+}

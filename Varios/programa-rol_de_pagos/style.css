@@ -1,141 +1,282 @@
-body {
-        background-color: #f1f5f9; 
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        margin: 0;
-        padding: 40px 20px;
-        display: flex;
-        justify-content: center;
-    }
-
-    #container {
-        width: 100%;
-        max-width: 1000px;
-        text-align: left;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin-top: 0;
-        margin-bottom: 24px;
-        letter-spacing: -0.5px;
-    }
-
-    /*BOTONES*/
-    .buttons {
-        display: flex;
-        gap: 12px;
-        margin-bottom: 32px;
-    }
-    .buttons button {
-        color: white;
-        font-family: inherit;
-        font-size: 0.9rem;
-        font-weight: 600;
-        cursor: pointer;
-        border-radius: 8px;
-        border: none;
-        padding: 10px 18px;
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-    .yellow-button {
-        background-color: #f59e0b; 
-    }
-    .yellow-button:hover {
-        background-color: #d97706;
-    }
-    .green-button {
-        background-color: #10b981; 
-    }
-    .green-button:hover {
-        background-color: #059669;
-    }
-    .red-button {
-        background-color: #ef4444; 
-    }
-    .red-button:hover {
-        background-color: #dc2626;
-    }
-    /* CONTEXTO: El contenedor de todas las tarjetas */
-#lista-empleados-actuales {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
-    padding: 10px;
+.oculto {
+    display: none !important;
 }
 
-/* LA TARJETA (Fila de empleado) */
-.empleado-row {
+body {
+    background-color: #f1f5f9; 
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    }
+
+#container {
+    width: 100%;
+    max-width: 1000px;
+    text-align: left;
+    align-items: center;
+}
+
+#container h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 0;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+/*BOTONES*/
+.buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+/* Modificado para que aplique tanto a los botones de arriba como al del formulario */
+.buttons button, 
+.green-button, 
+.yellow-button, 
+.red-button {
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none; /* Esto le quita el borde negro feo */
+    padding: 10px 18px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.yellow-button {
+    background-color: #f59e0b; 
+}
+
+.yellow-button:hover {
+    background-color: #d97706;
+}
+
+.green-button {
+    background-color: #10b981; 
+}
+
+.green-button:hover {
+    background-color: #059669;
+}
+
+.red-button {
+    background-color: #ef4444; 
+}
+
+.red-button:hover {
+    background-color: #dc2626;
+}
+
+/* CONTENEDOR PARA MOSTRAR LOS MESES */
+.contenedor-meses {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    padding: 16px;
+    gap: 32px; /* Separación limpia entre cada bloque de mes */
+}
+
+.caja-mes {
+    background-color: #ffffff;
     border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f0f0f0;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
 }
 
-.empleado-row:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-}
-
-/* DETALLES INTERNOS */
-.empleado-id {
-    font-size: 11px;
-    color: #94a3b8; /* Gris moderno */
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.mes-nombre {
+    font-size: 1.3rem;
     font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.total-pagado-mes {
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #fef3c7; /* Fondo naranja suave */
+    color: #d97706;            /* Texto naranja oscuro */
+    padding: 4px 12px;
+    border-radius: 9999px;     /* Forma de píldora */
+}
+
+/* CONTENEDOR PARA MOSTRAR LOS EMPLEADOS DENTRO DE CADA MES */
+.empleados-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Separación entre filas de empleados */
+}
+
+.empleado-caja {
+    display: grid;
+    /* Divide la fila en 5 columnas equilibradas para cada dato */
+    grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr; 
+    align-items: center;
+    padding: 12px 16px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    transition: background-color 0.2s ease;
+}
+
+.empleado-caja:hover {
+    background-color: #f1f5f9; /* Efecto sutil al pasar el cursor */
 }
 
 .empleado-nombre {
-    font-size: 16px;
-    font-weight: 700;
-    color: #1e293b;
-    margin-top: -2px;
+    font-weight: 600;
+    color: #334155;
 }
 
 .empleado-cargo {
-    font-size: 13px;
+    font-size: 0.9rem;
     color: #64748b;
+}
+
+/* Formato para los valores numéricos */
+.empleado-sueldo {
+    font-size: 0.95rem;
+    color: #475569;
+}
+
+.empleado-sueldo::before {
+    content: "$"; /* Agrega el signo de dólar automáticamente */
+}
+
+.empleado-descuentos {
+    font-size: 0.95rem;
+    color: #ef4444; /* Rojo para los descuentos */
     font-weight: 500;
 }
 
-.empleado-sueldo {
-    font-size: 15px;
-    font-weight: 600;
-    color: #16a34a; /* Verde éxito limpio */
-    margin-bottom: 8px; /* Separa un poco del botón */
+.empleado-descuentos::before {
+    content: "-$";
 }
 
-/* CORRECCIÓN DEL BOTÓN */
-.empleado-boton {
-    margin-top: auto; /* Empuja el botón al fondo si las tarjetas varían de tamaño */
+.empleado-sueldo-total {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #10b981; /* Verde para el neto a pagar */
+    text-align: right; /* Alinea el total a la derecha de su celda */
+}
+
+.empleado-sueldo-total::before {
+    content: "$";
+}
+
+/* Contenedor principal del formulario */
+.seccion-formulario {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px; /* Espacio limpio antes de que empiecen los meses */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+}
+
+/* Título de la sección */
+.seccion-formulario h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 0;
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
+}
+
+/* Grupo de control (Label + Inputs) */
+.form-group {
     display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-/* Apuntamos directamente a la etiqueta <button> que está dentro del div */
-.empleado-boton button {
-    width: 100%; /* Opcional: hace que el botón ocupe todo el ancho de la tarjeta */
-    padding: 8px 12px;
-    border: none;
+/* Etiqueta del input */
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #64748b;
+}
+
+/* Contenedor lineal para el Input y el Botón */
+#input-container {
+    display: flex;
+    gap: 12px;
+}
+
+/* Estilo para el Input */
+#input-container input {
+    flex: 1; /* Permite que crezca responsivamente */
+    max-width: 300px; /* Evita que se deforme en pantallas anchas */
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    border: 1px solid #cbd5e1;
     border-radius: 8px;
-    background: #2563eb;
-    color: white;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s ease;
+    background-color: #ffffff;
+    color: #1e293b;
+    outline: none;
+    transition: all 0.2s ease;
 }
 
-.empleado-boton button:hover {
-    background: #1d4ed8;
+/* Efecto Focus en el Input */
+#input-container input:focus {
+    border-color: #3b82f6; /* Azul sutil de enfoque */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
-.oculto {
-    display: none !important;
+
+/* --------------------------------------------------------------------------
+   MENSAJES DINÁMICOS DE ÉXITO Y ERROR
+   -------------------------------------------------------------------------- */
+.mensaje-alerta {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: slideDown 0.2s ease-out;
+}
+
+/* Estado de Éxito (Verde suave que combina con tu green-button) */
+.mensaje-alerta.exito {
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+}
+
+/* Estado de Error (Rojo suave que combina con tu red-button) */
+.mensaje-alerta.error {
+    background-color: #fef2f2;
+    border: 1px solid #fee2e2;
+    color: #991b1b;
+}
+
+/* Animación sutil de entrada para los mensajes */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

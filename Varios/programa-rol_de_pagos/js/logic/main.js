@@ -21,6 +21,36 @@ let rolDePago = [
                 "sueldo": 980,
                 "descuentos": 0,
                 "total_neto": 980
+            },
+            {
+                "id_empleado": "EMP-069",
+                "nombre": "Pedro Picapiedra",
+                "cargo": "Portero",
+                "sueldo": 482,
+                "descuentos": 0,
+                "total_neto": 482
+            }
+        ]
+    },
+    {
+        "id_mes": "2026-03",
+        "mes_nombre": "Marzo 2026",
+        "empleados":[
+            {
+                "id_empleado": "EMP-001",
+                "nombre": "Marvin Loor",
+                "cargo": "Gerente",
+                "sueldo": 1000,
+                "descuentos": 150,
+                "total_neto": 850
+            },
+            {
+                "id_empleado": "EMP-002",
+                "nombre": "Ana Gómez",
+                "cargo": "Diseñadora",
+                "sueldo": 980,
+                "descuentos": 0,
+                "total_neto": 980
             }
         ]
     }
@@ -115,7 +145,7 @@ function obtenerMes(id_mes) {
         if (mes.length !== 1 && mes.length !== 2) return null
     } else {
         anio = new Date().getFullYear();
-        mes = new Date().getMonth();
+        mes = new Date().getMonth()+1;
     }
     
     
@@ -137,22 +167,24 @@ function obtenerMes(id_mes) {
 
 
 export function generarRolDePago(id_mes){
-    let idMes = obtenerMes(id_mes);
-    let existeMes = rolDePago.some(
-        mes => mes.id_mes === idMes?.id_mes
-    );
-
-    if(!id_mes) {
-        return { message: "Ingrese un mes para generar el rol de pagos."}
+    let idMes = id_mes ? obtenerMes(id_mes) : obtenerMes();
+    
+    if (!idMes) {
+        return { message: "El formato del mes no es válido. Recuerde usar el formato AAAA-MM (ej: 2000-01)." };
     }
-    else if(existeMes) {
-        return { message: "Ya existe un rol de pagos del mes solicitado."}
+
+    let existeMes = rolDePago.some(
+        mes => mes.id_mes === idMes.id_mes
+    );
+    
+   if(existeMes) {
+        return { message: "Ya existe un rol de pagos del mes solicitado." };
     } else {
-        rolDePago.push({
+        rolDePago.unshift({
             "id_mes": idMes.id_mes,
             "mes_nombre": idMes.mes_nombre,
-            "empleados":[...listaEmpleados]
-        })
-        return { message: `Se ha generado un rol de pagos para el mes de ${idMes.mes_nombre} con la lista de los empleados actuales.`}
+            "empleados": [...listaEmpleados]
+        });
+        return { message: `Se ha generado un rol de pagos para el mes de ${idMes.mes_nombre} con la lista de los empleados actuales.` };
     }
 }

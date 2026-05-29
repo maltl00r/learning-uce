@@ -6,7 +6,7 @@ let generarRolBtn = document.getElementById("generarRolBtn")
 
 // Función para renderizar la página de inicio
 function renderizarPaginaPrincipal() {
-    container.innerHTML = "";
+    container.innerHTML = "<h1>Sistema de pagos centralino</h1>";
 
     // SE CREA EL <div> PARA PONER A LOS BOTONES
     const botonesDiv = document.createElement("div");

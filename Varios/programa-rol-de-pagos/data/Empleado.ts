@@ -1,14 +1,16 @@
+// PLANTILLA DE EMPLEADO
+
+
+
+
 // INTENTO DE UTILIZAR LO APRENDIDO DE CLASSES
 export class Empleado {
-
-    constructor(id_empleado,nombre,cargo,sueldo){
-        this.id_empleado = id_empleado;
-        this.nombre = nombre;
-        this.cargo = cargo;
-        this.sueldo = sueldo;
-    }
-
-    
+  constructor(
+    public id_empleado: string,
+    public nombre: string,
+    public cargo: string,
+    public sueldo: number
+  ) {}
 }
 
 export const listaEmpleados = [

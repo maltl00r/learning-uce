@@ -1,0 +1,59 @@
+[
+    {
+        "id_mes": "2026-04",
+        "mes_nombre": "Abril 2026",
+        "empleados":[
+            {
+                "id_empleado": "EMP-001",
+                "nombre": "Marvin Loor",
+                "cargo": "Gerente",
+                "sueldo": 3000,
+                "aumentos": 0,
+                "descuentos": 343.5,
+                "total_neto": 2656.5
+            },
+            {
+                "id_empleado": "EMP-002",
+                "nombre": "Ana Gómez",
+                "cargo": "Técnica",
+                "sueldo": 980,
+                "aumentos": 0,
+                "descuentos": 92.61,
+                "total_neto": 887.39
+            },
+            {
+                "id_empleado": "EMP-069",
+                "nombre": "Pedro Picapiedra",
+                "cargo": "Administrativo",
+                "sueldo": 482,
+                "descuentos": 45.549,
+                "aumentos": 0,
+                "total_neto": 436.45
+            }
+        ]
+},
+    {
+        "id_mes": "2026-03",
+        "mes_nombre": "Marzo 2026",
+        "empleados":[
+            {
+                "id_empleado": "EMP-001",
+                "nombre": "Marvin Loor",
+                "cargo": "Gerente",
+                "sueldo": 3000,
+                "aumentos": 0,
+                "descuentos": 343.5,
+                "total_neto": 2656.5
+            },
+            {
+                "id_empleado": "EMP-002",
+                "nombre": "Ana Gómez",
+                "cargo": "Técnica",
+                "sueldo": 980,
+                "aumentos": 15,
+                "descuentos": 94.02,
+                "total_neto": 900.97
+            }
+        ]
+    }
+]

@@ -1,3 +1,6 @@
+/* --------------------------------------------------------------------------
+   ESTILOS GENERALES Y ESTRUCTURA BASE
+   -------------------------------------------------------------------------- */
 .oculto {
     display: none !important;
 }
@@ -9,7 +12,7 @@ body {
     padding: 40px 20px;
     display: flex;
     justify-content: center;
-    }
+}
 
 #container {
     width: 100%;
@@ -28,14 +31,13 @@ body {
     letter-spacing: -0.5px;
 }
 
-/*BOTONES*/
+/* BOTONES GENERALES */
 .buttons {
     display: flex;
     gap: 12px;
     margin-bottom: 32px;
 }
 
-/* Modificado para que aplique tanto a los botones de arriba como al del formulario */
 .buttons button, 
 .green-button, 
 .yellow-button, 
@@ -46,7 +48,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     border-radius: 8px;
-    border: none; /* Esto le quita el borde negro feo */
+    border: none; 
     padding: 10px 18px;
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -55,35 +57,155 @@ body {
     justify-content: center;
 }
 
-.yellow-button {
-    background-color: #f59e0b; 
+.yellow-button { background-color: #f59e0b; }
+.yellow-button:hover { background-color: #d97706; }
+
+.green-button { background-color: #10b981; }
+.green-button:hover { background-color: #059669; }
+
+.red-button { background-color: #ef4444; }
+.red-button:hover { background-color: #dc2626; }
+
+
+/* --------------------------------------------------------------------------
+   SECCIÓN FORMULARIO (GENERAR ROL DE PAGO)
+   -------------------------------------------------------------------------- */
+.seccion-formulario {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
 }
 
-.yellow-button:hover {
-    background-color: #d97706;
+.seccion-formulario h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 0;
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
 }
 
-.green-button {
-    background-color: #10b981; 
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.green-button:hover {
-    background-color: #059669;
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #64748b;
 }
 
-.red-button {
-    background-color: #ef4444; 
+#input-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
-.red-button:hover {
-    background-color: #dc2626;
+#input-container input {
+    flex: 1; 
+    max-width: 300px; 
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #1e293b;
+    outline: none;
+    transition: all 0.2s ease;
 }
 
-/* CONTENEDOR PARA MOSTRAR LOS MESES */
+#input-container input:focus {
+    border-color: #3b82f6; 
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+
+/* --------------------------------------------------------------------------
+   NUEVO: INGRESO DE NOVEDADES (TABLA DINÁMICA DE EMPLEADOS)
+   -------------------------------------------------------------------------- */
+#contenedor-empleados h3 {
+    font-size: 1.1rem;
+    color: #334155;
+    margin-top: 24px;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+/* Grid equilibrado en 4 columnas para el formulario interactivo */
+.tabla-titulos {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.2fr 1.2fr;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+    font-weight: 600;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 8px;
+}
+
+/* Fila interactiva para cada empleado */
+.fila-empleado {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    text-transform: none; /* Desactiva el uppercase de los títulos */
+    color: #334155;
+    font-size: 0.95rem;
+    transition: background-color 0.15s ease;
+}
+
+.fila-empleado:hover {
+    background-color: #f1f5f9;
+}
+
+/* Subtítulos de cargo e indicadores pequeños (ej: Horas, Solo IESS) */
+.fila-empleado small {
+    color: #94a3b8;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+/* Estilos comunes para los inputs numéricos de la tabla */
+.fila-empleado input[type="number"] {
+    padding: 6px 10px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.fila-empleado input[type="number"]:focus:not(:disabled) {
+    border-color: #10b981; /* Borde verde al editar montos */
+}
+
+/* Inputs deshabilitados de forma automática por lógica de negocio */
+.fila-empleado input:disabled {
+    cursor: not-allowed;
+    color: #94a3b8;
+}
+
+
+/* --------------------------------------------------------------------------
+   VISUALIZACIÓN DE HISTORIAL DE MESES (VISTA HISTÓRICA)
+   -------------------------------------------------------------------------- */
 .contenedor-meses {
     display: flex;
     flex-direction: column;
-    gap: 32px; /* Separación limpia entre cada bloque de mes */
+    gap: 32px; 
 }
 
 .caja-mes {
@@ -109,23 +231,22 @@ body {
 .total-pagado-mes {
     font-size: 1rem;
     font-weight: 600;
-    background-color: #fef3c7; /* Fondo naranja suave */
-    color: #d97706;            /* Texto naranja oscuro */
+    background-color: #fef3c7; 
+    color: #d97706;            
     padding: 4px 12px;
-    border-radius: 9999px;     /* Forma de píldora */
+    border-radius: 9999px;     
 }
 
-/* CONTENEDOR PARA MOSTRAR LOS EMPLEADOS DENTRO DE CADA MES */
 .empleados-container {
     display: flex;
     flex-direction: column;
-    gap: 12px; /* Separación entre filas de empleados */
+    gap: 12px; 
 }
 
+/* Grid de lectura en 6 columnas */
 .empleado-caja {
     display: grid;
-    /* Divide la fila en 5 columnas equilibradas para cada dato */
-    grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr; 
+    grid-template-columns: 1.5fr 1.3fr 1fr 1fr 1fr 1fr; 
     align-items: center;
     padding: 12px 16px;
     background-color: #f8fafc;
@@ -135,7 +256,7 @@ body {
 }
 
 .empleado-caja:hover {
-    background-color: #f1f5f9; /* Efecto sutil al pasar el cursor */
+    background-color: #f1f5f9; 
 }
 
 .empleado-nombre {
@@ -148,128 +269,65 @@ body {
     color: #64748b;
 }
 
-/* Formato para los valores numéricos */
 .empleado-sueldo {
     font-size: 0.95rem;
     color: #475569;
 }
+.empleado-sueldo::before { content: "$"; }
 
-.empleado-sueldo::before {
-    content: "$"; /* Agrega el signo de dólar automáticamente */
+.empleado-aumentos {
+    color: #57b41a;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
+.empleado-aumentos::before { content: "$"; }
 
 .empleado-descuentos {
     font-size: 0.95rem;
-    color: #ef4444; /* Rojo para los descuentos */
+    color: #ef4444; 
     font-weight: 500;
 }
-
-.empleado-descuentos::before {
-    content: "-$";
-}
+.empleado-descuentos::before { content: "-$"; }
 
 .empleado-sueldo-total {
     font-size: 1rem;
     font-weight: 700;
-    color: #10b981; /* Verde para el neto a pagar */
-    text-align: right; /* Alinea el total a la derecha de su celda */
+    color: #10b981; 
+    text-align: right; 
 }
+.empleado-sueldo-total::before { content: "$"; }
 
-.empleado-sueldo-total::before {
-    content: "$";
-}
-
-/* Contenedor principal del formulario */
-.seccion-formulario {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 32px; /* Espacio limpio antes de que empiecen los meses */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    border: 1px solid #e2e8f0;
-}
-
-/* Título de la sección */
-.seccion-formulario h2 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin-top: 0;
-    margin-bottom: 16px;
-    letter-spacing: -0.3px;
-}
-
-/* Grupo de control (Label + Inputs) */
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-/* Etiqueta del input */
-.form-group label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #64748b;
-}
-
-/* Contenedor lineal para el Input y el Botón */
-#input-container {
-    display: flex;
-    gap: 12px;
-}
-
-/* Estilo para el Input */
-#input-container input {
-    flex: 1; /* Permite que crezca responsivamente */
-    max-width: 300px; /* Evita que se deforme en pantallas anchas */
-    padding: 10px 14px;
-    font-family: inherit;
-    font-size: 0.95rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    background-color: #ffffff;
-    color: #1e293b;
-    outline: none;
-    transition: all 0.2s ease;
-}
-
-/* Efecto Focus en el Input */
-#input-container input:focus {
-    border-color: #3b82f6; /* Azul sutil de enfoque */
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
 
 /* --------------------------------------------------------------------------
    MENSAJES DINÁMICOS DE ÉXITO Y ERROR
    -------------------------------------------------------------------------- */
 .mensaje-alerta {
     margin-top: 16px;
-    padding: 12px 16px;
+    padding: 14px 16px;
     border-radius: 8px;
     font-size: 0.95rem;
     font-weight: 500;
+    white-space: pre-line; /* Clave: Permite saltos de línea \n del JS */
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     animation: slideDown 0.2s ease-out;
 }
 
-/* Estado de Éxito (Verde suave que combina con tu green-button) */
 .mensaje-alerta.exito {
     background-color: #ecfdf5;
     border: 1px solid #a7f3d0;
     color: #065f46;
 }
 
-/* Estado de Error (Rojo suave que combina con tu red-button) */
 .mensaje-alerta.error {
     background-color: #fef2f2;
     border: 1px solid #fee2e2;
     color: #991b1b;
 }
 
-/* Animación sutil de entrada para los mensajes */
 @keyframes slideDown {
     from {
         opacity: 0;

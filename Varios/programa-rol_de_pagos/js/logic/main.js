@@ -10,25 +10,28 @@ let rolDePago = [
                 "id_empleado": "EMP-001",
                 "nombre": "Marvin Loor",
                 "cargo": "Gerente",
-                "sueldo": 1000,
-                "descuentos": 150,
-                "total_neto": 850
+                "sueldo": 3000,
+                "aumentos": 0,
+                "descuentos": 343.5,
+                "total_neto": 2656.5
             },
             {
                 "id_empleado": "EMP-002",
                 "nombre": "Ana Gómez",
-                "cargo": "Diseñadora",
+                "cargo": "Técnica",
                 "sueldo": 980,
-                "descuentos": 0,
-                "total_neto": 980
+                "aumentos": 0,
+                "descuentos": 92.61,
+                "total_neto": 887.39
             },
             {
                 "id_empleado": "EMP-069",
                 "nombre": "Pedro Picapiedra",
-                "cargo": "Portero",
+                "cargo": "Administrativo",
                 "sueldo": 482,
-                "descuentos": 0,
-                "total_neto": 482
+                "descuentos": 45.549,
+                "aumentos": 0,
+                "total_neto": 436.45
             }
         ]
     },
@@ -40,17 +43,19 @@ let rolDePago = [
                 "id_empleado": "EMP-001",
                 "nombre": "Marvin Loor",
                 "cargo": "Gerente",
-                "sueldo": 1000,
-                "descuentos": 150,
-                "total_neto": 850
+                "sueldo": 3000,
+                "aumentos": 0,
+                "descuentos": 343.5,
+                "total_neto": 2656.5
             },
             {
                 "id_empleado": "EMP-002",
                 "nombre": "Ana Gómez",
-                "cargo": "Diseñadora",
+                "cargo": "Técnica",
                 "sueldo": 980,
-                "descuentos": 0,
-                "total_neto": 980
+                "aumentos": 15,
+                "descuentos": 94.02,
+                "total_neto": 900.97
             }
         ]
     }
@@ -166,25 +171,23 @@ function obtenerMes(id_mes) {
 }
 
 
-export function generarRolDePago(id_mes){
+export function generarRolDePago(id_mes, empleadosModificados) {
     let idMes = id_mes ? obtenerMes(id_mes) : obtenerMes();
     
     if (!idMes) {
-        return { message: "El formato del mes no es válido. Recuerde usar el formato AAAA-MM (ej: 2000-01)." };
+        return { success: false, message: "El formato del mes no es válido. Recuerde usar el formato AAAA-MM (ej: 2026-04)." };
     }
 
-    let existeMes = rolDePago.some(
-        mes => mes.id_mes === idMes.id_mes
-    );
+    let existeMes = rolDePago.some(mes => mes.id_mes === idMes.id_mes);
     
-   if(existeMes) {
-        return { message: "Ya existe un rol de pagos del mes solicitado." };
+    if (existeMes) {
+        return { success: false, message: "Ya existe un rol de pagos del mes solicitado." };
     } else {
         rolDePago.unshift({
             "id_mes": idMes.id_mes,
             "mes_nombre": idMes.mes_nombre,
-            "empleados": [...listaEmpleados]
+            "empleados": empleadosModificados // <-- Guardamos los datos que envió el usuario
         });
-        return { message: `Se ha generado un rol de pagos para el mes de ${idMes.mes_nombre} con la lista de los empleados actuales.` };
+        return { success: true, message: `Se ha generado un rol de pagos para el mes de ${idMes.mes_nombre}.` };
     }
 }
